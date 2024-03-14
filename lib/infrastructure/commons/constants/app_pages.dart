@@ -13,7 +13,7 @@ class AppPages {
     GetPage(
       name: RoutesConstants.dashBoardScreen,
       page: () => const RoutineScreen(),
-      binding: DashBoardBinding(),
+      binding: RoutineBinding(),
     ),
     GetPage(
       name: RoutesConstants.mainScreen,

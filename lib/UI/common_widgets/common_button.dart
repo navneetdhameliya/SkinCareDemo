@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:skincaredemo/UI/commons/text_widgets/base/headline_body_one_base_widget.dart';
+import 'package:skincaredemo/infrastructure/commons/constants/color_constants.dart';
 
 class CommonButton extends StatelessWidget {
   const CommonButton({
@@ -30,7 +31,7 @@ class CommonButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           border: Border.all(color: borderColor ?? Colors.transparent, width: 1.5),
-          color:  buttonColor ?? Colors.black,
+          color:  buttonColor ?? Colors.white,
           borderRadius: BorderRadius.circular(8),
         ),
         child: loader ?? false
@@ -49,7 +50,7 @@ class CommonButton extends StatelessWidget {
                     fit: BoxFit.scaleDown,
                     child: HeadlineBodyOneBaseWidget(
                         title: title,
-                        titleColor: titleColor!,
+                        titleColor: titleColor??ColorConstants.textColor,
                         fontSize: 16,
                         maxLine: 1,
                       ),

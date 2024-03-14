@@ -1,7 +1,8 @@
 
 class StorageConstants {
 
-  static const String username = "storage_user_name";
+  static const String streak = "streak";
+  static const String lastStreak = "last_streak_added";
 
 }
 

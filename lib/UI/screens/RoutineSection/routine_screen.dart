@@ -130,7 +130,7 @@ class RoutineScreen extends GetView<RoutineController> {
                           }
 
                           var data = jsonEncode(controller.skinCarData.map((element) => element.toJson()).toList());
-                          SharedPreferenceService.saveStringValue('routineData', data);
+                          SharedPreferenceService.saveStringValue(StorageConstants.routineData, data);
 
 
                           showTopToast(msg: AppConstants.streakAdded);

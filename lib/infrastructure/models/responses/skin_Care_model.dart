@@ -18,7 +18,7 @@ class SkinCareDataModel {
     subTitle: json["subTitle"],
     completed: json["completed"],
     image: json["image"],
-    time: json["time"],
+    time: DateTime.parse(json["time"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -26,6 +26,6 @@ class SkinCareDataModel {
     "subTitle": subTitle,
     "image": image,
     "completed": completed,
-    "time": time,
+    "time": time.toString(),
   };
 }

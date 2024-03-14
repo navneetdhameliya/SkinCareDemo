@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
@@ -32,8 +33,8 @@ class RoutineScreen extends GetView<RoutineController> {
             appBar: AppBar(
               backgroundColor: ColorConstants.primaryColor,
               title: GestureDetector(
-                onTap: () {
-                  SharedPreferenceService.clearPreference();
+                onTap: () async {
+                  // SharedPreferenceService.clearPreference();
                 },
                 child: HeadlineBodyOneBaseWidget(
                   title: AppConstants.dailySkinCare,
@@ -115,10 +116,7 @@ class RoutineScreen extends GetView<RoutineController> {
                             time.month != now.month &&
                             time.day != now.day) {
                           int streak =
-                              (await SharedPreferenceService.getIntValue(
-                                          StorageConstants.streak) ??
-                                      0) +
-                                  1;
+                              (await SharedPreferenceService.getIntValue(StorageConstants.streak) ?? 0) + 1;
 
                           await SharedPreferenceService.saveIntValue(
                               StorageConstants.streak, streak);
@@ -130,6 +128,11 @@ class RoutineScreen extends GetView<RoutineController> {
                           for (var element in controller.skinCarData) {
                             element.completed = false;
                           }
+
+                          var data = jsonEncode(controller.skinCarData.map((element) => element.toJson()).toList());
+                          SharedPreferenceService.saveStringValue('routineData', data);
+
+
                           showTopToast(msg: AppConstants.streakAdded);
                         } else {
                           showTopToast(msg: AppConstants.streakAlreadyAdded);
